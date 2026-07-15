@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 from analytics_service import AnalyticsService
