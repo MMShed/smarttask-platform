@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: smarttask-ingress
+  namespace: smarttask
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # OpenShift Route annotation (alternative to Ingress on OpenShift)
+    # route.openshift.io/termination: "edge"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: smarttask.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: smarttask-frontend
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: smarttask-gateway
+                port:
+                  number: 3001
+          - path: /analytics
+            pathType: Prefix
+            backend:
+              service:
+                name: smarttask-gateway
+                port:
+                  number: 3001

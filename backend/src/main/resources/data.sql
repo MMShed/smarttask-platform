@@ -1,0 +1,4 @@
+INSERT INTO tasks (title, description, priority, status, assignee, ai_suggestion, created_at, updated_at) VALUES
+('Production DB connection pool exhausted', 'Application logs show HikariPool timeout errors since 14:00 EST. Affecting all order processing endpoints.', 'CRITICAL', 'OPEN', 'ops-team', 'Increase connection pool max size and investigate long-running queries. Consider adding a read replica.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('API gateway returning 502 on /payments', 'Intermittent 502 errors from the payment gateway proxy. Started after today''s deployment.', 'HIGH', 'IN_PROGRESS', 'dev-team', 'Roll back the gateway config change from today''s deployment and re-test in staging before re-deploying.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Add rate limiting to public REST API', 'External clients are hammering the /search endpoint without throttling.', 'MEDIUM', 'OPEN', NULL, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
